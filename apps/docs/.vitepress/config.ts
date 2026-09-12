@@ -1,16 +1,18 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Threadly Documentation",
+  title: "Threadly Docs",
   description: "The universal embeddable commenting platform for the modern web.",
   base: process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS ? "/Threadly/" : "/",
+  srcDir: "docs",
   ignoreDeadLinks: true,
   themeConfig: {
     nav: [
-      { text: "Guide", link: "/getting-started" },
+      { text: "Docs", link: "/getting-started" },
       { text: "Widget", link: "/install-widget" },
       { text: "SDK", link: "/sdk" },
-      { text: "REST API", link: "/api" },
+      { text: "API", link: "/api" },
+      { text: "Troubleshoot", link: "/domains/troubleshooting" },
     ],
     sidebar: [
       {
@@ -61,6 +63,6 @@ export default defineConfig({
         ],
       },
     ],
-    socialLinks: [{ icon: "github", link: "https://github.com/threadly" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/TypeAbdullah/Threadly" }],
   },
 });
