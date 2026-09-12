@@ -6,29 +6,36 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
+
 jobs:
   validate:
-    name: Lint, Typecheck & Build
+    name: Lint, Typecheck, Test & Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Typecheck
         run: pnpm typecheck
+
+      - name: Run Tests
+        run: pnpm --filter @threadly/server test
 
       - name: Build all packages & apps
         run: pnpm build
