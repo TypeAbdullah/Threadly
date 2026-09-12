@@ -5,8 +5,17 @@ export default defineConfig({
   description: "The universal embeddable commenting platform for the modern web.",
   base: process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS ? "/Threadly/" : "/",
   srcDir: "docs",
+  cleanUrls: true,
   ignoreDeadLinks: true,
   themeConfig: {
+    siteTitle: "Threadly",
+    search: {
+      provider: "local",
+    },
+    footer: {
+      message: '<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">Open-source MIT Licensed</a> | <a href="/privacy">Privacy policy</a>',
+      copyright: `Copyright © ${new Date().getFullYear()} Threadly`,
+    },
     nav: [
       { text: "Docs", link: "/getting-started" },
       { text: "Widget", link: "/install-widget" },
@@ -18,7 +27,6 @@ export default defineConfig({
       {
         text: "Introduction",
         items: [
-          { text: "Overview", link: "/" },
           { text: "Getting Started", link: "/getting-started" },
           { text: "Create a Site", link: "/create-a-site" },
         ],

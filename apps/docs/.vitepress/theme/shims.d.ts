@@ -8,3 +8,13 @@ declare module "./components/ThreadlyHero.vue" {
   const component: any;
   export default component;
 }
+
+declare module "./components/ThreadlyLogo.vue" {
+  const component: any;
+  export default component;
+}
+
+declare module "./components/ThreadlyFooter.vue" {
+  const component: any;
+  export default component;
+}

@@ -1,32 +1,90 @@
-/* Threadly Docs - Mihon-inspired Premium 3D Theme */
+/* Threadly Docs - Theme & Responsive Color System */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --vp-font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --vp-font-family-mono: 'JetBrains Mono', monospace;
 
-  /* Indigo / Violet Brand Accent matching screenshot */
+  /* Indigo / Violet Brand Accent */
   --vp-c-brand-1: #6366f1;
   --vp-c-brand-2: #818cf8;
   --vp-c-brand-3: #4f46e5;
   --vp-c-brand-soft: rgba(99, 102, 241, 0.15);
+}
 
+/* Light Mode Theme */
+:root:not(.dark) {
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-bg-elv: #f1f5f9;
+  --vp-c-border: #e2e8f0;
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #475569;
+
+  --th-hero-bg: radial-gradient(circle at 65% 30%, rgba(99, 102, 241, 0.08), transparent 55%),
+                radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.05), transparent 50%),
+                #ffffff;
+  --th-nav-bg: rgba(255, 255, 255, 0.88);
+  --th-nav-border: rgba(0, 0, 0, 0.08);
+
+  --th-card-bg: #ffffff;
+  --th-card-border: #e2e8f0;
+  --th-card-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  --th-headline-color: #0f172a;
+  --th-subtext-color: #475569;
+  --th-sec-btn-bg: #f1f5f9;
+  --th-sec-btn-border: #cbd5e1;
+  --th-sec-btn-color: #1e293b;
+  --th-phone-bg: #f8fafc;
+  --th-phone-border: #cbd5e1;
+}
+
+/* Dark Mode Theme */
+.dark {
   --vp-c-bg: #0c0d14;
   --vp-c-bg-alt: #12131c;
   --vp-c-bg-elv: #181a26;
   --vp-c-border: #232636;
+  --vp-c-text-1: #f8fafc;
+  --vp-c-text-2: #94a3b8;
+
+  --th-hero-bg: radial-gradient(circle at 65% 30%, rgba(99, 102, 241, 0.16), transparent 55%),
+                radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.1), transparent 50%),
+                #0c0d14;
+  --th-nav-bg: rgba(12, 13, 20, 0.82);
+  --th-nav-border: rgba(255, 255, 255, 0.06);
+
+  --th-card-bg: #151722;
+  --th-card-border: #242738;
+  --th-card-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+
+  --th-headline-color: #ffffff;
+  --th-subtext-color: #949bb0;
+  --th-sec-btn-bg: #181a24;
+  --th-sec-btn-border: #282b3c;
+  --th-sec-btn-color: #c0c6dc;
+  --th-phone-bg: #12131d;
+  --th-phone-border: #26293d;
 }
 
-/* Background Ambient Glow */
+/* Header & Navbar */
+.VPNav {
+  background: var(--th-nav-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--th-nav-border) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+/* Background Ambient Glow on Home */
 .VPHome {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 65% 30%, rgba(99, 102, 241, 0.16), transparent 55%),
-              radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.1), transparent 50%),
-              #0c0d14;
+  background: var(--th-hero-bg);
+  transition: background 0.25s ease;
 }
 
-.VPHome::before {
+.dark .VPHome::before {
   content: "";
   position: absolute;
   top: 0;
@@ -40,17 +98,10 @@
   z-index: 0;
 }
 
-/* Header & Navbar */
-.VPNav {
-  background: rgba(12, 13, 20, 0.8) !important;
-  backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-/* Feature Cards matching screenshot */
+/* Feature Cards */
 .VPFeature {
-  background: #151722 !important;
-  border: 1px solid #242738 !important;
+  background: var(--th-card-bg) !important;
+  border: 1px solid var(--th-card-border) !important;
   border-radius: 18px !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   position: relative;
@@ -59,7 +110,7 @@
 .VPFeature:hover {
   transform: translateY(-4px);
   border-color: rgba(99, 102, 241, 0.4) !important;
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--th-card-shadow);
 }
 
 /* Keyframe Animations */

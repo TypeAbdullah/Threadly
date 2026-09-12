@@ -17,8 +17,8 @@
 
         <!-- CTA Buttons -->
         <div class="hero-cta-row">
-          <a href="./getting-started" class="btn-primary">Get started</a>
-          <a href="./domains/troubleshooting" class="btn-secondary">Help center</a>
+          <a :href="withBase('/getting-started')" class="btn-primary">Get started</a>
+          <a :href="withBase('/domains/troubleshooting')" class="btn-secondary">Help center</a>
         </div>
 
         <!-- Release Card -->
@@ -29,7 +29,7 @@
             <span class="release-date">Released Sep 12, 2026</span>
           </div>
 
-          <a href="./install-widget" class="release-download-btn">
+          <a :href="withBase('/install-widget')" class="release-download-btn">
             <!-- Material Download SVG Icon -->
             <svg class="mat-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
@@ -143,7 +143,7 @@
         <p class="feature-desc">
           Zero host CSS leakage. Host button styles will never destroy Threadly, and widget styles will never break your website.
         </p>
-        <a href="./install-widget" class="feature-link">
+        <a :href="withBase('/install-widget')" class="feature-link">
           <span>Explore Widget</span>
           <span class="arrow-symbol">→</span>
         </a>
@@ -161,7 +161,7 @@
         <p class="feature-desc">
           Automatic *.threadly.com subdomains and one-click Custom Hostnames with free edge SSL provisioning.
         </p>
-        <a href="./domains/overview" class="feature-link">
+        <a :href="withBase('/domains/overview')" class="feature-link">
           <span>Domain setup</span>
           <span class="arrow-symbol">→</span>
         </a>
@@ -179,7 +179,7 @@
         <p class="feature-desc">
           Comprehensive diagnostics, DNS propagation checks, common error resolutions, and status guide.
         </p>
-        <a href="./domains/troubleshooting" class="feature-link">
+        <a :href="withBase('/domains/troubleshooting')" class="feature-link">
           <span>Troubleshooting guide</span>
           <span class="arrow-symbol">→</span>
         </a>
@@ -190,6 +190,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { withBase } from 'vitepress';
 
 const heroRef = ref(null);
 const tiltX = ref(7);
@@ -355,18 +356,20 @@ const handleUserComment = () => {
 .hero-headline {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--th-headline-color, #ffffff);
   line-height: 1.15;
   margin: 0 0 1.2rem;
   letter-spacing: -0.02em;
+  transition: color 0.25s ease;
 }
 
 .hero-subtext {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #949bb0;
+  color: var(--th-subtext-color, #949bb0);
   max-width: 480px;
   margin: 0 0 2rem;
+  transition: color 0.25s ease;
 }
 
 /* CTA Buttons */
@@ -398,9 +401,9 @@ const handleUserComment = () => {
 .btn-secondary {
   padding: 0.65rem 1.6rem;
   border-radius: 9999px;
-  background: #181a24;
-  border: 1px solid #282b3c;
-  color: #c0c6dc;
+  background: var(--th-sec-btn-bg, #181a24);
+  border: 1px solid var(--th-sec-btn-border, #282b3c);
+  color: var(--th-sec-btn-color, #c0c6dc);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -408,42 +411,43 @@ const handleUserComment = () => {
 }
 
 .btn-secondary:hover {
-  background: #202332;
-  border-color: #383c54;
-  color: #ffffff;
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
 }
 
 /* Release Card */
 .release-card {
   width: 100%;
   max-width: 360px;
-  background: #151722;
-  border: 1px solid #242738;
+  background: var(--th-card-bg, #151722);
+  border: 1px solid var(--th-card-border, #242738);
   border-radius: 16px;
   padding: 1.1rem 1.3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--th-card-shadow, 0 8px 24px rgba(0, 0, 0, 0.4));
+  transition: all 0.25s ease;
 }
 
 .release-label {
   display: block;
   font-size: 0.7rem;
-  color: #727992;
+  color: var(--th-subtext-color, #727992);
   margin-bottom: 0.2rem;
 }
 
 .release-version {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--th-headline-color, #ffffff);
+  transition: color 0.25s ease;
 }
 
 .release-date {
   display: block;
   font-size: 0.7rem;
-  color: #727992;
+  color: var(--th-subtext-color, #727992);
 }
 
 .release-download-btn {
@@ -775,19 +779,19 @@ const handleUserComment = () => {
 }
 
 .feature-card {
-  background: #151722;
-  border: 1px solid #242738;
+  background: var(--th-card-bg, #151722);
+  border: 1px solid var(--th-card-border, #242738);
   border-radius: 16px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--th-card-shadow);
   transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-4px);
-  border-color: #383c54;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: var(--vp-c-brand-1);
 }
 
 .icon-container {
@@ -801,18 +805,18 @@ const handleUserComment = () => {
 }
 
 .icon-green {
-  background: #182622;
-  color: #34d399;
+  background: rgba(52, 211, 153, 0.15);
+  color: #10b981;
 }
 
 .icon-blue {
-  background: #1a2234;
-  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.15);
+  color: #3b82f6;
 }
 
 .icon-amber {
-  background: #2a2218;
-  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  color: #f59e0b;
 }
 
 .feature-svg {
@@ -823,16 +827,18 @@ const handleUserComment = () => {
 .feature-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--th-headline-color, #ffffff);
   margin: 0 0 0.5rem;
+  transition: color 0.25s ease;
 }
 
 .feature-desc {
   font-size: 0.85rem;
   line-height: 1.5;
-  color: #949bb0;
+  color: var(--th-subtext-color, #949bb0);
   margin: 0 0 1.2rem;
   flex: 1;
+  transition: color 0.25s ease;
 }
 
 .feature-link {

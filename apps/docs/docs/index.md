@@ -1,5 +1,7 @@
 ---
 layout: page
+sidebar: false
+aside: false
 title: Threadly Docs
 titleTemplate: false
 ---
@@ -93,15 +95,17 @@ onUnmounted(() => {
 .home-code-section h2 {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--th-headline-color, #ffffff);
   letter-spacing: -0.02em;
   margin-bottom: 0.6rem;
+  transition: color 0.25s ease;
 }
 
 .section-desc {
   font-size: 1rem;
-  color: #949bb0;
+  color: var(--th-subtext-color, #949bb0);
   max-width: 600px;
   margin: 0 auto 2.5rem;
+  transition: color 0.25s ease;
 }
 </style>
