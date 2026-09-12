@@ -1,0 +1,30 @@
+{
+  "name": "@threadly/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/**/*.test.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@threadly/types": "workspace:*",
+    "@threadly/validation": "workspace:*",
+    "better-auth": "^1.1.21",
+    "dotenv": "^16.4.7",
+    "hono": "^4.7.2",
+    "mongodb": "^6.13.0",
+    "mongodb-memory-server": "^10.1.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
