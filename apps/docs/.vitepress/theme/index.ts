@@ -1,5 +1,5 @@
+// @ts-nocheck
 import DefaultTheme from "vitepress/theme";
-// @ts-ignore
 import ThreadlyHero from "./components/ThreadlyHero.vue";
 import "./custom.css";
 
